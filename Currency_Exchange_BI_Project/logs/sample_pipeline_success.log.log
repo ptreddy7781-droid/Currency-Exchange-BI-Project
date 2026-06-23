@@ -1,0 +1,76 @@
+Currency Exchange BI Pipeline
+Started: 2026-06-22 21:42:29.066838
+
+--- extract_currency_data.py ---
+Connecting to the Frankfurter API...
+Data collected successfully.
+Raw JSON file saved: C:\Users\Admin\Desktop\Currency_Exchange_BI_Project\Data\Raw\currency_rates_20260622_214230.json
+Raw CSV file saved: C:\Users\Admin\Desktop\Currency_Exchange_BI_Project\Data\Raw\currency_rates_20260622_214230.csv
+
+Currency exchange rates:
+    rate_date base_currency  ... exchange_rate       collection_timestamp
+0  2026-06-22           EUR  ...       1.63460 2026-06-22 21:42:30.875332
+1  2026-06-22           EUR  ...       1.62230 2026-06-22 21:42:30.875332
+2  2026-06-22           EUR  ...       0.92570 2026-06-22 21:42:30.875332
+3  2026-06-22           EUR  ...       0.86468 2026-06-22 21:42:30.875332
+4  2026-06-22           EUR  ...     108.47300 2026-06-22 21:42:30.875332
+5  2026-06-22           EUR  ...     185.33000 2026-06-22 21:42:30.875332
+6  2026-06-22           EUR  ...       1.14560 2026-06-22 21:42:30.875332
+
+[7 rows x 5 columns]
+
+Extraction completed successfully.
+Total records collected: 7
+
+
+--- clean_currency_data.py ---
+Latest raw file selected:
+C:\Users\Admin\Desktop\Currency_Exchange_BI_Project\Data\Raw\currency_rates_20260622_214230.csv
+
+Raw data loaded successfully.
+Raw rows: 7
+Duplicate rows removed: 0
+
+Missing values before cleaning:
+rate_date               0
+base_currency           0
+target_currency         0
+exchange_rate           0
+collection_timestamp    0
+dtype: int64
+
+Processed file saved successfully:
+C:\Users\Admin\Desktop\Currency_Exchange_BI_Project\Data\Processed\cleaned_currency_rates.csv
+
+Cleaned currency data:
+   rate_date base_currency  ... collection_date  collection_hour
+0 2026-06-22           EUR  ...      2026-06-22               21
+1 2026-06-22           EUR  ...      2026-06-22               21
+2 2026-06-22           EUR  ...      2026-06-22               21
+3 2026-06-22           EUR  ...      2026-06-22               21
+4 2026-06-22           EUR  ...      2026-06-22               21
+5 2026-06-22           EUR  ...      2026-06-22               21
+6 2026-06-22           EUR  ...      2026-06-22               21
+
+[7 rows x 9 columns]
+
+Cleaning completed successfully.
+Final number of rows: 7
+Final number of columns: 9
+
+
+--- load_currency_to_postgresql.py ---
+Processed data loaded successfully.
+Rows ready for database: 7
+PostgreSQL connection successful.
+Connected database: currency_exchange_db
+Data loaded into PostgreSQL successfully.
+Table created: currency_rates
+Database verification completed.
+Records stored: 7
+
+
+
+Pipeline completed successfully.
+Finished: 2026-06-22 21:42:34.811938
+Duration: 0:00:05.745100
